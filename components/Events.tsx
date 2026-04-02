@@ -21,8 +21,8 @@ const events = [
   },
   {
     name: "Wedding",
-    date: "12 Dec 2026",
-    time: "6:00 PM",
+    date: "26 April 2026",
+    time: "12:35 PM",
     location: "Utkarsh Sohale, Jalgaon, Maharashtra",
     details: "Saptapadi and rituals of Traditional Hindu wedding",
     icon: "💒",
