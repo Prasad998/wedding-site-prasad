@@ -15,6 +15,9 @@ const backgroundPhotos = [
 export default function Hero() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
+  // ✅ ADDED: mobile detection state
+  const [isMobile, setIsMobile] = useState(false);
+
   // Preload images
   useEffect(() => {
     backgroundPhotos.forEach((src) => {
@@ -31,6 +34,16 @@ export default function Hero() {
     }, 4000); // Slightly slower for more elegant transitions
 
     return () => clearInterval(interval);
+  }, []);
+
+  // ✅ ADDED: resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -70,6 +83,7 @@ export default function Hero() {
       <div className="absolute bottom-48 right-8 opacity-25 animate-float" style={{ animationDelay: '0.8s' }}>
         <div className="w-3 h-3 bg-wedding-pink-500 rounded-full"></div>
       </div>
+
       {/* Additional light graphics */}
       <div className="absolute top-20 left-1/4 opacity-15 animate-float" style={{ animationDelay: '3s' }}>
         <div className="w-12 h-12 border border-wedding-gold-400 rounded-full"></div>
@@ -98,7 +112,7 @@ export default function Hero() {
           style={{
             backgroundImage: `url(${photo})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: isMobile ? "center top" : "center", // ✅ UPDATED
             backgroundRepeat: "no-repeat",
           }}
         />
@@ -127,7 +141,6 @@ export default function Hero() {
           26 April 2026 • Jalgaon, India
         </motion.p>
       </div>
-
 
       {/* Bottom navigation */}
       <div className="relative z-10 px-4 pb-8 mt-auto">

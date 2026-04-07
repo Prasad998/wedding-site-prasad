@@ -45,7 +45,7 @@ const gotu = Gotu({
 
 export const metadata: Metadata = {
   title: "Prasad & Chinmayi - Wedding",
-  description: "Join us for our special day on December 12, 2026",
+  description: "Join us for our special day on April 26, 2026",
 };
 
 // Add subtle rotating mandala art
