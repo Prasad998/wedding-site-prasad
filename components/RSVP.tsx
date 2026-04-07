@@ -77,12 +77,11 @@ export default function RSVP() {
 
                 <div className="text-left">
                   <label className="block text-lg font-semibold text-wedding-pink-600">
-                    Email
+                    Email/ Contact Number (Optional)
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     name="email"
-                    required
                     className="w-full px-4 py-3 text-lg rounded-2xl border"
                   />
                 </div>
